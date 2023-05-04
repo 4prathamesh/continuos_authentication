@@ -14,7 +14,8 @@ model = cv2.dnn.readNetFromTorch('nn4.small2.v1.t7')
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 datasets='database'
 # Set the minimum distance threshold for face recognition
-threshold = 0.55
+threshold = 0.60
+
 
 names = []
 
@@ -41,7 +42,7 @@ while True:
         face = gray[y:y + h, x:x + w]
 
         # Resize the face image to a fixed size
-        face = cv2.resize(face, (100, 100))
+        face = cv2.resize(face, (96, 96))
 
         # Compute the embedding (i.e. feature vector) of the face using the pre-trained deep neural network
         blob = cv2.dnn.blobFromImages(

@@ -2,7 +2,6 @@
 import cv2
 import os
 import numpy as np
-
 # Set the directory containing face images
 dir_path = "database"
 
@@ -56,6 +55,7 @@ except cv2.error as e:
     print(e)
     exit()
 
+
 # Generate embeddings for the face images
 blob = cv2.dnn.blobFromImages(np.repeat(faces[..., np.newaxis], 3, -1).astype(np.float32) / 255.0, 1.0, (96, 96), (0, 0, 0), False)
 
@@ -64,3 +64,5 @@ embeddings = model.forward()
 
 # Save the embeddings and labels to a file
 np.savez('embeddings.npz', embeddings=embeddings, labels=labels)
+
+
